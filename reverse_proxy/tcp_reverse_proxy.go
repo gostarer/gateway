@@ -7,11 +7,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/e421083458/gateway_demo/proxy/load_balance"
+	balance "github.com/gostarer/balance"
 	tcp_proxy_middleware "github.com/gostarer/gateway/middleware/tcp_proxy"
 )
 
-func NewTcpLoadBalanceReverseProxy(c *tcp_proxy_middleware.TcpSliceRouterContext, lb load_balance.LoadBalance) *TcpReverseProxy {
+func NewTcpLoadBalanceReverseProxy(c *tcp_proxy_middleware.TcpSliceRouterContext, lb balance.LoadBalance) *TcpReverseProxy {
 	return func() *TcpReverseProxy {
 		nextAddr, err := lb.Get("")
 		if err != nil {
